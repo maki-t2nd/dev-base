@@ -1,0 +1,13 @@
+{
+  "SITE_NAME": "サイトタイトル",
+  "SITE": {
+    "VIEWPORT": "width=960",
+    "KEYWORDS": ["hoge", "fuga", "piyo"],
+    "DESCRIPTION": "せつめいです。",
+    "URL": "http://hogehoge.com/"
+  },
+  "ogp": {
+    "image": "images/ogp.jpg",
+    "lang": "ja"
+  }
+}

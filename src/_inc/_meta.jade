@@ -1,0 +1,24 @@
+meta(name='description', content='#{SITE.DESCRIPTION}')
+meta(name='keywords', content='#{SITE.KEYWORDS}')
+//- ogp
+- if (page.code != 'top')
+  meta(property="og:title", content="#{page.title} | #{SITE_NAME}")
+  meta(property="og:type", content="article")
+  meta(property="og:url", content="#{SITE.URL}#{page.url}")
+- else
+  meta(property="og:title", content="#{SITE_NAME}")
+  meta(property="og:type", content="website")
+  meta(property="og:url", content="#{SITE.URL}")
+
+- if (page.description)
+  meta(property="og:description", content="#{page.description}")
+- else
+  meta(property="og:description", content="#{SITE.DESCRIPTION}")
+
+- if (page.image)  
+  meta(property="og:image", content="#{SITE.URL}#{page.image}")
+- else
+  meta(property="og:image", content="#{SITE.URL}#{ogp.image}")
+
+meta(property="og:site_name", content="#{SITE_NAME}")
+meta(property="og:locale", content="#{ogp.lang}")

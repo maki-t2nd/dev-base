@@ -1,0 +1,18 @@
+include /_mixins
+block vars
+doctype
+html(lang='ja', xmlns:og='http://ogp.me/ns#', xmlns:fb='http://www.facebook.com/2008/fbml')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='#{SITE.VIEWPORT}')
+    meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome=1')
+    include /include/_title
+    include /include/_meta
+    include /include/_link
+    block css
+  body
+    block header
+    block content
+    block footer
+    include /include/_script
+    block script

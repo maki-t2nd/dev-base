@@ -1,0 +1,12 @@
+extend /_layout
+block vars
+  - var page = {code: 'test', title: 'てすと', description: 'てすとです。', url: 'test/', image: 'images/test/ogp.jpg'}
+block css
+  +addCss(['hoge', 'piyo'])
+block header
+
+block content
+  p= page.code
+
+block footer
+  p= page.code

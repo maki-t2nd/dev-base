@@ -1,0 +1,21 @@
+{
+  "name": "maki_t2nd-dev-base",
+  "version": "0.1.0",
+  "authors": [
+    "maki_t2nd <maki_t@maki-o.net>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.scss": "~2.2.0",
+    "bootstrap-sass-official": "~3.2.0",
+    "jquery": "1",
+    "jquery-easing": "*"
+  }
+}

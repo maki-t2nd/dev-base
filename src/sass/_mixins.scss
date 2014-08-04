@@ -1,0 +1,241 @@
+//
+// Mixins
+// --------------------------------------------------
+
+@mixin reset-html5doctor {
+  /*!
+  * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+  * Richard Clark (http://richclarkdesign.com)
+  * http://cssreset.com
+  */
+  html, body, div, span, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  abbr, address, cite, code,
+  del, dfn, em, img, ins, kbd, q, samp,
+  small, strong, sub, sup, var,
+  b, i,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section, summary,
+  time, mark, audio, video {
+      margin:0;
+      padding:0;
+      border:0;
+      outline:0;
+      font-size:100%;
+      vertical-align:baseline;
+      background:transparent;
+  }
+  body {
+      line-height:1;
+  }
+  article,aside,details,figcaption,figure,
+  footer,header,hgroup,menu,nav,section {
+      display:block;
+  }
+  nav ul {
+      list-style:none;
+  }
+  blockquote, q {
+      quotes:none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+      content:'';
+      content:none;
+  }
+  a {
+      margin:0;
+      padding:0;
+      font-size:100%;
+      vertical-align:baseline;
+      background:transparent;
+  }
+  /* change colours to suit your needs */
+  ins {
+      background-color:#ff9;
+      color:#000;
+      text-decoration:none;
+  }
+  /* change colours to suit your needs */
+  mark {
+      background-color:#ff9;
+      color:#000;
+      font-style:italic;
+      font-weight:bold;
+  }
+  del {
+      text-decoration: line-through;
+  }
+  abbr[title], dfn[title] {
+      border-bottom:1px dotted;
+      cursor:help;
+  }
+  table {
+      border-collapse:collapse;
+      border-spacing:0;
+  }
+  /* change border colour to suit your needs */
+  hr {
+      display:block;
+      height:1px;
+      border:0;
+      border-top:1px solid #cccccc;
+      margin:1em 0;
+      padding:0;
+  }
+  input, select {
+      vertical-align:middle;
+  }
+} // [end] mixin reset-html5doctor
+
+@mixin cf {
+  *zoom: 1;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin st($w: $siteW) {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  width: $w;
+}
+
+@mixin float($w, $way: left){
+  float: $way;
+  width: $w;
+}
+
+@mixin yohaku($pre, $way, $st, $ed, $step){
+  $i: $st;
+  $suf: null;
+  $prop: null;
+  $hyphen: '-';
+  @if $pre == m {
+    $prop: margin;
+  }@else{
+    $prop: padding;
+  }
+  @if $way == bottom {
+    $suf: b;
+  }@else if $way == top {
+    $suf: t;
+  }@else if $way == left {
+    $suf: l;
+  }@else if $way == right {
+    $suf: r;
+  }@else{
+    $hyphen: null;
+  }
+  @while $i <= $ed{
+    .#{$pre}#{$suf}#{$i}{
+      #{$prop}#{$hyphen}#{$way}: #{$i}px;
+    }
+    $i: $i + $step;
+  }
+}
+
+@mixin margin($way:null, $st:10, $ed: 50, $step: 10){
+  $pre: m;
+  @include yohaku($pre, $way, $st, $ed, $step);
+ 
+}
+
+@mixin padding($way:null, $st:10, $ed: 50, $step: 10){
+  $pre: p;
+  @include yohaku($pre, $way, $st, $ed, $step);
+}
+
+@mixin iconSet ($values){
+  @each $value in $values {
+    &.#{$value} a {
+      background-image: url("#{$iconPath}icon_#{$value}.gif");
+    }
+  }
+}
+
+@mixin titleFont($fs:18px){
+  @include text-shadow(1px 1px 2px #666);
+  color: #fff;
+  font-size: $fs;
+  font-weight: bold;
+}
+
+@mixin afterIcon($icon, $va:baseline) {
+  &:after {
+    content: url("#{$iconPath}icon_#{$icon}.gif");
+    margin-left: 5px;
+    vertical-align: $va;
+  }
+}
+
+@mixin indent($elems, $time:1){
+  @each $elem in $elems {
+    > #{$elem} {
+      margin-left: $indent * $time;
+    }
+  }
+}
+
+@mixin gridSet($rowW, $gridIndent, $elem:grid, $cols:6){
+  margin-left: $gridIndent * -1;
+  width: $rowW;
+
+  @for $i from 1 through $cols {
+    $col: $cols / $i;
+    $totalMargin: $col * $gridIndent;
+    .#{$elem}#{$i} {
+      width: ($rowW - $totalMargin) / $col;
+      display: block;
+      float: left;
+      margin: {
+        bottom: $gridIndent;
+        left: $gridIndent;
+      }
+    }
+  }
+}
+
+@mixin columnSet($colIndent, $prefix:column-, $elems:(left, right, auto, center)){
+  @each $elem in $elems {
+    .#{$prefix}#{$elem} {
+      margin-left: $colIndent;
+    }
+  }
+}
+
+@mixin marginSet($elems, $tElem, $m:30px) {
+  @each $elem in $elems {
+    #{$elem} + #{$tElem} {
+      margin-top: #{$m};
+    }
+  }
+}
+
+// Media Query
+// -------------------------
+
+@mixin mq($minWidth: 0, $maxWidth: 0) {
+  @if $minWidth != 0 and $maxWidth != 0 {
+    @media screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+      @content;
+    }
+  } @else if $maxWidth == 0 {
+    @media screen and (min-width: $minWidth) {
+      @content;
+    }
+  } @else if $minWidth == 0 {
+    @media screen and (max-width: $maxWidth) {
+      @content;
+    }
+  }
+  
+}
+

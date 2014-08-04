@@ -1,0 +1,49 @@
+//
+// Variables
+// --------------------------------------------------
+
+// font-family
+// 日本語
+$fontHiragino: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+$fontMeiryo: 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+$fontPgothic: 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+$fontMincho: 'ヒラギノ明朝 Pro W6', 'Hiragino Mincho Pro', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
+
+// 英数
+$fontArial: Arial, Helvetica, sans-serif;
+$fontCourierNew: 'Courier New', Courier, monospace;
+$fontGeorgia: Georgia, 'Times New Roman', Times, serif;
+$fontVerdana: Verdana, Arial, Helvetica, sans-serif;
+$fontTahoma: Tahoma, Arial, Helvetica, sans-serif;
+
+// Google Font
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+// $fontOpenSans: 'Open Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+
+$fontFamily: $fontHiragino !default;
+
+// color
+$fontColor: #fff !default;
+$keyColor: #8cc63f;
+$linkColor: $fontColor;
+
+// font-size
+$fontSize: 16px;
+$spFontSize: 62.5%;
+
+// サイト幅
+$siteW: 900px !default;
+$minScreen: 700px;
+$maxScreen: 960px;
+
+// パスの設定
+$imgPath: "../images/";
+$bgPath: "#{$imgPath}bg/";
+$iconPath: "#{$imgPath}icon/";
+$topPath: "#{$imgPath}top/";
+
+$spPath: "#{$imgPath}sp/";
+
+// css sprite
+// @import "arrows/*.png";
+// $sprites: sprite-map("arrows/*.png");

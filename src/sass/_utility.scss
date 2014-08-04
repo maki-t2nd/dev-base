@@ -1,0 +1,35 @@
+//
+// Utillity
+// --------------------------------------------------
+
+// 中央揃え
+.center {
+  text-align: center;
+}
+
+// 右揃え
+.right {
+  text-align: right;
+}
+
+// クリア
+.clear {
+  clear: both;
+}
+
+// float
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+// margin
+// @include margin(bottom, 5, 100, 5);
+
+
+// padding
+// @include padding(bottom);
+

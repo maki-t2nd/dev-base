@@ -1,0 +1,9 @@
+//- 追加CSS
+mixin addCss(pageCss)
+  each css in pageCss
+    link(rel="stylesheet", href="/css/#{css}.css") 
+
+//- 追加js
+mixin addScript(pageJs)
+  each js in pageJs
+    script(src="/js/#{js}.js")

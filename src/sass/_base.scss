@@ -1,0 +1,104 @@
+//
+// Base
+// --------------------------------------------------
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.op {
+    &:hover {
+      img {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+img {
+  vertical-align: bottom;
+}
+
+
+// Text
+// -------------------------
+p {
+}
+
+em {
+}
+
+strong {
+}
+
+// Headings
+// -------------------------
+
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+
+// Lists
+// -------------------------
+
+// Unordered and Ordered lists
+ul {
+
+}
+
+ol {
+  margin-left: 25px;
+  list-style-type: decimal;
+}
+
+// Description Lists
+dl {
+}
+
+dt {
+}
+
+dd {
+}
+
+// Table
+// -------------------------
+
+table {
+
+}
+
+th {
+
+}
+
+td {
+
+}
+
+
+// Form
+// -------------------------
+
+
+
+
+// Others
+// -------------------------
+
+blockquote {
+
+}
+

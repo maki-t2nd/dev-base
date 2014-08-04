@@ -1,0 +1,11 @@
+extend _layout
+block vars
+  - var page = {code: 'top'}
+
+block content
+  p= page.code
+    em
+      a(href='#') hoge
+
+block footer
+  p= page.code
