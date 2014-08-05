@@ -6,13 +6,13 @@ html(lang='ja', xmlns:og='http://ogp.me/ns#', xmlns:fb='http://www.facebook.com/
     meta(charset='utf-8')
     meta(name='viewport', content='#{SITE.VIEWPORT}')
     meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome=1')
-    include /include/_title
-    include /include/_meta
-    include /include/_link
+    include /_inc/_title
+    include /_inc/_meta
+    include /_inc/_link
     block css
   body
     block header
     block content
     block footer
-    include /include/_script
+    include /_inc/_script
     block script

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "author": "maki_t2nd",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/maki-t2nd/dev-base"
+  },
   "scripts": {
     "postinstall": "bower install"
   },
@@ -15,6 +19,7 @@
     "gulp-pngmin": "^0.1.1",
     "gulp-rimraf": "^0.1.0",
     "gulp-util": "^3.0.0",
-    "gulp-webserver": "^0.4.0"
+    "gulp-webserver": "^0.4.0",
+    "run-sequence": "^0.3.6"
   }
 }

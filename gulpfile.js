@@ -1,11 +1,12 @@
-var gulp = require('gulp')
-, webserver = require('gulp-webserver')
-, jade = require('gulp-jade')
-, compass = require('gulp-compass')
-, prefix = require('gulp-autoprefixer')
-, rimraf = require('gulp-rimraf')
-, plumber = require('gulp-plumber')
-, pngmin = require('gulp-pngmin');
+var gulp      = require('gulp')
+, webserver   = require('gulp-webserver')
+, jade        = require('gulp-jade')
+, compass     = require('gulp-compass')
+, prefix      = require('gulp-autoprefixer')
+, rimraf      = require('gulp-rimraf')
+, plumber     = require('gulp-plumber')
+, pngmin      = require('gulp-pngmin')
+, runSequence = require('run-sequence');
 
 var config = require('./src/config.json');
 var dev = true;
@@ -84,7 +85,7 @@ gulp.task('pngmin', function() {
 
 // dest削除
 gulp.task('clean', function() {
-  return gulp.src('dest/*')
+  return gulp.src('dest/')
   .pipe(rimraf());
 });
 
@@ -96,10 +97,10 @@ gulp.task('watch', function() {
 
 gulp.task('default', function() {});
 
-gulp.task('dev',['clean'], function() {
-  gulp.start(['jade', 'compass', 'js', 'image', 'watch', 'server']);
+gulp.task('dev', function() {
+  runSequence('clean', ['jade', 'compass', 'js', 'image'], ['watch', 'server']);
 });
 
-gulp.task('build',['clean'], function() {
-  gulp.start(['jade', 'compass', 'js', 'image']);
+gulp.task('build', function() {
+  runSequence('clean', ['jade', 'compass', 'js', 'image'], 'pngmin');
 });
