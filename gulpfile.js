@@ -8,31 +8,24 @@ var gulp      = require('gulp')
 , pngmin      = require('gulp-pngmin')
 , runSequence = require('run-sequence');
 
-var src = './src',
-    dest = './dest';
+var src = 'src',
+    dest = 'dest';
 
 var path = {
   'jade': src + '/**/[a-zA-Z0-9]*.jade',
   'wjade': src + '/**/*.jade',
   'sass': src + '/**/[a-zA-Z0-9]*.scss',
   'wsass': src + '/**/*.scss',
-  'images': [
-    src + '/images/**/*.jpg',
-    src + '/images/**/*.png',
-    src + '/images/**/*.gif'],
+  'images': src + '/images/**/*',
   'js': [
     'bower_components/jquery/dist/jquery.js',
     'bower_components/jquery-easing-original/jquery.easing.1.3.js',
     src + '/js/**/*.js'
   ],
-  'docs': [
-    'src/**/*.html',
-    'src/**/*.pdf',
-    'src/**/*.doc'
-  ]
+  'docs': src + '/**/*.{html,php,txt,pdf,doc}'
 }
 
-var config = require(src + '/config.json');
+var config = require('./config.json');
 var dev = true;
 var style;
 
@@ -87,7 +80,7 @@ gulp.task('js', function() {
 });
 
 // imgコピー
-gulp.task('image', function() {
+gulp.task('images', function() {
   return gulp.src(path.images)
   .pipe(gulp.dest(dest + '/images/'));
 });
@@ -115,16 +108,18 @@ gulp.task('clean', function() {
 gulp.task('watch', function() {
   gulp.watch(path.wjade, ['jade']);
   gulp.watch(path.wsass, ['compass']);
-  gulp.watch(path.images, ['image']);
+  gulp.watch(path.images, ['images']);
+  gulp.watch(path.js, ['js']);
   gulp.watch(path.docs, ['copy']);
 });
+
 
 gulp.task('default', function() {});
 
 gulp.task('dev', function() {
-  runSequence('clean', ['jade', 'js', 'image', 'copy'], 'compass', ['watch', 'server']);
+  runSequence('clean', ['jade', 'js', 'images', 'copy'], 'compass', ['watch', 'server']);
 });
 
 gulp.task('build', function() {
-  runSequence('clean', ['jade', 'js', 'image', 'copy'], 'compass', 'pngmin');
+  runSequence('clean', ['jade', 'js', 'images', 'copy'], 'compass', 'pngmin');
 });

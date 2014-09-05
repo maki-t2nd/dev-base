@@ -184,7 +184,7 @@
   }
 }
 
-@mixin gridSet($rowW, $gridIndent, $elem:grid, $cols:6){
+@mixin gridSet($rowW, $gridIndent, $elem:grid, $cols:12){
   margin-left: $gridIndent * -1;
   width: $rowW;
 
@@ -237,5 +237,40 @@
     }
   }
   
+}
+
+// CSS Sprite
+// -------------------------
+@mixin sprite-bg($name, $sprite) {
+  background-image: sprite-url($sprite);
+  background-position: sprite-position($sprites, $name);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: image-width(sprite-file($sprite, $name));
+  height: image-height(sprite-file($sprite, $name));
+  $xsiz: image-width(sprite-path($sprite));
+  @include background-size($xsiz, auto);
+}
+
+@mixin sprite-bg2x($name, $sprite2x) {
+  background-image: sprite-url($sprite2x);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: image-width(sprite-file($sprite2x, $name)) / 2;
+  height: image-height(sprite-file($sprite2x, $name)) / 2;
+  $ypos: round(nth(sprite-position($sprite2x, $name), 2) / 2);
+  background-position: 0 $ypos;
+  $xsiz: image-width(sprite-path($sprite2x)) / 2;
+  @include background-size($xsiz, auto);
+
+}
+
+
+
+// Font Size
+// -------------------------
+@mixin fs($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
 }
 
